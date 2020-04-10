@@ -20,7 +20,7 @@ type User struct {
 	about string
 	userpic string
 	timereg string
-	rootid int
+	aid int
 }
 
 
@@ -36,8 +36,8 @@ func secret(w http.ResponseWriter, r *http.Request) {
 func signinname(username string) (User) {
 	db := dbConnect()
 	var user User
-	row := db.QueryRow("select id, username, fname, sname, about, userpic time,rootid from users where username = ?", username)
-	err := row.Scan(&user.id, &user.username, &user.fname,&user.sname, &user.about, &user.userpic, &user.timereg, &user.rootid)
+	row := db.QueryRow("select id, username, fname, rootid from users where username = ?", username)
+	err := row.Scan(&user.id, &user.username, &user.fname,&user.sname, &user.aid)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -47,11 +47,13 @@ func signinname(username string) (User) {
 func signbyid(i int) (User) {
 	db := dbConnect()
 	var user User
-	row := db.QueryRow("select id, username, fname, sname, about, userpic, time, rootid from users where id = ?", i)
-	err := row.Scan(&user.id, &user.username, &user.fname,&user.sname, &user.about, &user.userpic, &user.timereg,&user.rootid)
+	row := db.QueryRow("select id, username, fname, sname, rootid from users where id = ?", i)
+	err := row.Scan(&user.id, &user.username, &user.fname,&user.sname, &user.aid)
+
 	if err != nil {
 		fmt.Println(err)}
 	db.Close()
+	fmt.Println("rootid:",user.aid);
 	return user
 }
 type link struct {
@@ -73,8 +75,8 @@ func signHandler(w http.ResponseWriter, r *http.Request) {
 	var user User
 	var username = r.FormValue("login")
 	var password = r.FormValue("password")
-	row := db.QueryRow("select id, username, fname, sname, about, userpic, time, rootid from users where username = ? and password=MD5(?)", username, password)
-	err := row.Scan(&user.id, &user.username, &user.fname, &user.sname, &user.about, &user.userpic, &user.timereg,&user.rootid)
+	row := db.QueryRow("select id, username, fname, sname, rootid from users where username = ? and password=MD5(?)", username, password)
+	err := row.Scan(&user.id, &user.username, &user.fname, &user.sname, &user.aid)
 	if err == nil {
 		fmt.Println(err)
 	}

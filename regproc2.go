@@ -60,8 +60,10 @@ func mailsend(fname string, sname string,email string, msg string) {
 } */
 
 func regprocHandle2(w http.ResponseWriter, r *http.Request) {
+
 	var user User
-	user = isauth(w, r)
+    	user = isauth(w,r)
+	fmt.Println(user.id);
 	chknon(w,r)
 	db := dbConnect()
 	r.ParseForm()
@@ -86,8 +88,8 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("Number of rows are %d\n", count) *?	if err != nil {
 		fmt.Println(err)
 	} */
-	if user.id == user.rootid  {
-		//note_invite = "Правав есть"
+	if user.id == user.aid  {
+		//note_invite = "Права есть"
 		rchk.Invitech = 1
 	} else {
 		//note_invite = "GHfd ytn"
@@ -190,7 +192,7 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 		}
 		fmt.Println(str)
-		result, err := db.Exec("insert into users (username,password,fname,sname,rootid values(?,MD5(?),?,?,?)", username, password, fname, sname,user.rootid)
+		result, err := db.Exec("insert into users (username,password,fname,sname,rootid) values(?,MD5(?),?,?,?)", username, password, fname, sname,user.aid)
 		if err != nil {
 			fmt.Println(err)
 		}
