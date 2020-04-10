@@ -1,0 +1,123 @@
+body	{
+    color: #000000;
+    background-color: #444444;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    align: center;
+}
+a	{
+    color: #000000;
+}
+div	{
+    color: #000000;
+    background-color: #777777;
+    width:  80%;
+    align: center;
+    margin: 8px auto 0px auto;
+    border-radius: 10px;
+    align: center;
+    border: 2px solid #004400;
+}
+#mer {
+    background-color: #777777;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 766px;
+    padding: 8px 32px 8px 32px;
+    align: center;
+}
+p.con {
+    width: 80%;
+    height: auto;
+    background: #ff0000;
+    text-align: left;
+}
+h1	{
+    max-width: 27em;
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0px;
+    text-align: right;
+}
+h1.f	{
+    float: left;
+    font-weight: bold;
+    padding-top: 2px;
+}
+p {
+    color: #000000;
+    font-family: 'Arial';
+    font-size: 15px;
+    max-width: 50em;
+    text-align:left;
+    border-radius: 7px;
+}
+p.br {
+    color: #000000;
+    font-family: 'Arial';
+    font-size: 15px;
+    max-width: 50em;
+    text-align: left;
+}
+}
+.hidden	{
+    display: none;
+}
+#fu	{
+    padding: 32px 0px 32px 0px;
+    width:  830px
+}
+#head	{
+    color: #009900;
+    font-size: 16px;
+    padding: 0px;
+    margin: 16px auto 0px auto;
+    width: 80%
+    border-radius: 10px;
+    display: inline-block;
+    align: center;
+}
+#logo	{
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+}
+.menu
+{
+    position: absolute;
+    width: 200px;
+    left: 688px;
+    height: 100%;
+}
+.lighterColor {
+    position: absolute;
+    width: 720px;
+    background: #fc3;
+}
+
+
+a {
+    color: white;
+    background: #660000;
+    padding: 3px;
+    border-radius: 6px;
+    display: inline-block;
+}
+.data {
+    padding: 3px;
+    border-radius: 3px;
+    display: inline-block;
+
+    position: absolute;
+    width: 720px;
+    background: #fc3;
+}
+.right {
+    position: absolute;
+    width: 15%;
+    right: 0%;
+    fon-size: 16px;
+}

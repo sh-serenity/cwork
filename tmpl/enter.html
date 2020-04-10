@@ -1,0 +1,18 @@
+{{ define "index" }}
+
+{{ template "header" }}
+
+<div>
+    <form action="/sign/" method="POST">
+        <table>
+            <tr><td>Введите ваш логин:</td><td><input type="text" name="login"></td></tr>
+            <tr><td>Введите ваш пароль:</td><td><input type="password" name="password"></td></tr>
+        </table>
+        <input type="submit" value="Проходим в порядке очереди.">
+    </form>
+
+</div>
+
+{{ template "footer" }}
+
+{{ end }}

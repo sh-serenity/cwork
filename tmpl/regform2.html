@@ -1,0 +1,21 @@
+{{ define "regform" }}
+
+{{ template "header" }}
+<div>
+<p>
+    Заполняйте внимательно. Никакх знаков кроме букв и цифр, ни в логине, не в пароле. Иначе просто не пустит.
+<form action="/regproc2/" method="POST">
+    <table>
+        <tr><td>Введите логин:</td><td><input type="text" name="login"></td></tr>
+        <tr><td>Введите имя:</td><td><input type="text" name="fname"></td></tr>
+        <tr><td>Введите фамилию:</td><td><input type="text" name="sname"></td></tr>
+        <tr><td>Введите  пароль:</td><td><input type="password" name="password"></td></tr>
+        <tr><td>Подтвердите пароль:</td><td><input type="password" name="conifirm"></td></tr>
+    </table>
+    <input type="submit" value="Ok">
+</form>
+</p>
+    </div>
+{{ template "footer" }}
+
+{{ end }}
