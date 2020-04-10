@@ -224,7 +224,7 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 		to = "Регистрация"
 		//	end = 0
 		p := &regdata{Resume: resume,Url: url, To: to}
-		t, _ := template.ParseFiles("tmpl/regproc.html","tmpl/header.html","footer.html")
+		t, _ := template.ParseFiles("tmpl/regproc.html","tmpl/header.html","tmpl/footer.html")
 		t.ExecuteTemplate(w,"index", p)
 
 	}

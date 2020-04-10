@@ -14,7 +14,10 @@ div	{
     background-color: #777777;
     width:  80%;
     align: center;
-    margin: 8px auto 0px auto;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px 32px 8px 32px;
     border-radius: 10px;
     align: center;
     border: 2px solid #004400;
@@ -51,7 +54,7 @@ p {
     font-family: 'Arial';
     font-size: 15px;
     max-width: 50em;
-    text-align:left;
+    text-align: left;
     border-radius: 7px;
 }
 p.br {
