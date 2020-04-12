@@ -1,0 +1,15 @@
+[Unit]
+Description=cwork
+
+[Service]
+ExecStart=/opt/go/cwork/run.sh
+WorkingDiretory=/opt/go/cwork
+StandardOutput=null
+Restart=on-failure
+
+# Increase the default a bit in order to allow many simultaneous
+# files to be monitored, we might need a lot of fds.
+
+[Install]
+WantedBy=multi-user.target
+Alias=cwork.service

@@ -19,7 +19,7 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	var rchk regchk
 	var resume string
-	var note_username, note_password, note_invite, note_fname, note_sname string
+	var note_username, note_usernamep, note_password, note_invite, note_fname, note_sname string
 	var username = r.FormValue("login")
 	var password = r.FormValue("password")
 	var fname = r.FormValue("fname")
@@ -48,10 +48,10 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(uerr)
 	}
 	if ucount == 0 {
-		note_username = note_username + "Такой логин еще не зарегистрирован"
+		note_usernamep = "Такой логин еще не зарегистрирован"
 		rchk.Usernamereg = 1
 	} else {
-		note_username = "Вы уже регистрировались здесь, с тем же логином"
+		note_usernamep = "Логин занят"
 		rchk.Usernamereg = 0
 	}
 
@@ -119,7 +119,7 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 
 		http.Redirect(w,r,"/home/",301)
 	} else {
-		resume = note_invite + " " + note_username + " " + note_fname + " "  + note_sname + " " + note_password + " Данные введены с ошибками. Поправьте и попробуйте снова."
+		resume = note_invite + " " + note_username +" " + note_usernamep + " " + note_fname + " "  + note_sname + " " + note_password + " Данные введены с ошибками. Поправьте и попробуйте снова."
 		url = "/reg2/"
 		to = "Регистрация"
 		p := &regdata{Resume: resume,Url: url, To: to}
