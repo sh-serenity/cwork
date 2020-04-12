@@ -10,9 +10,11 @@
 [$1]
     comment = whatever
     path = /home/$1
-    browsable = yes
+    browsable = no
     read only = no
     guest ok = no
+    create mask = 0660
+    directory mask = 0770
 
 EOF
 

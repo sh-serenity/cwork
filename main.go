@@ -62,7 +62,7 @@ func RegForm2(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-var validnon = regexp.MustCompile("^/(postform|reg|regproc|enter|sign|post|posts|exit|home|profile|filesave|regproc2|reg2)/$")
+var validnon = regexp.MustCompile("^/(reg|regproc|enter|sign|exit|home|regproc2|reg2/reghelp)/$")
 var vaitdn = regexp.MustCompile("^/(comform|comment|users)/([0-9]+)$")
 
 func chknon(w http.ResponseWriter, r *http.Request)  {

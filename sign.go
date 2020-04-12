@@ -3,13 +3,10 @@ package main
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-//	"github.com/shurcooL/github_flavored_markdown"
 
-	//	"github.com/shurcooL/github_flavored_markdown"
 	"html/template"
 	"net/http"
 )
-//var store = sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY")))
 type User struct {
 	id int
 	username string
@@ -61,7 +58,6 @@ type link struct {
 	Url string
 }
 
-//var sessionid string
 
 func signHandler(w http.ResponseWriter, r *http.Request) {
 	chknon(w,r)
@@ -70,7 +66,6 @@ func signHandler(w http.ResponseWriter, r *http.Request) {
 	session.Values["authenticated"] =  false
 	db := dbConnect()
 	session.Save(r, w)
-	//	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
 	r.ParseForm()
 	var user User
 	var username = r.FormValue("login")
@@ -93,7 +88,6 @@ func signHandler(w http.ResponseWriter, r *http.Request) {
 		t.ExecuteTemplate(w, "tmp",tmp)
 
 	 }
-//	Home(w,r)
 	db.Close()
 }
 
@@ -101,8 +95,6 @@ func isauth(w http.ResponseWriter, r *http.Request) (User) {
 	session, _ := store.Get(r, "cookie-name")
 	var user User
 	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
-		//		t, _ := template.ParseFiles("tmpl/nologin.html","tmpl/header.html","tmpl/footer.html")
-		//		t.ExecuteTemplate(w,"nologin", nil)
 		http.Redirect(w,r,"/",302)
 	} else {
 		userid := session.Values["userid"].(int)
