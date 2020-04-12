@@ -65,6 +65,8 @@ tar -C /usr/local -xzf go1.14.2.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=/opt/go
 git clone https://github.com/sh-serenity/cwork.git
+mv /opt/go/cwork/adduser.conf /etc
+
 /usr/sbin/addgroup --group go
 /usr/sbin/adduser --quiet --disabled-password --gecos "" --disabled-login go --ingroup go
 cd cwork
