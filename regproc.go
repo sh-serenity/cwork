@@ -67,10 +67,10 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 
 	eu := validlogin.FindStringSubmatch(username)
 	if eu == nil {
-		note_username = "юзернейм неверный"
+		note_username = "Логин неверный"
 		rchk.Usernameex = 0
 	} else {
-		note_username = "юзернейм в порядке"
+		note_username = "Логин в порядке"
 		rchk.Usernameex = 1
 	}
 	var ucount int
@@ -81,7 +81,7 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(uerr)
 	}
 	if ucount == 0 {
-		note_usernamep = note_usernamep + "Такой логин еще не зарегистрирован"
+		note_usernamep =  "Такой логин еще не зарегистрирован"
 		rchk.Usernamereg = 1
 	} else {
 		note_usernamep = "Вы уже регистрировались здесь, с тем же логином"
@@ -93,15 +93,15 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 		note_password = "Пароль может содержать только заглавные и маленькие буквы латиницы, и цифры."
 		rchk.Passwordrx = 0
 	} else {
-		note_username = "Пароль содержит правильные символы."
+		note_password = "Пароль содержит правильные символы."
 		rchk.Passwordrx = 1
 	}
 
 	if password == conifirm {
-		note_password = note_password + "Пароль и подтверждение его совападают"
+		note_password =  "Пароль и подтверждение его совападают"
 		rchk.Passwordcon = 1
 	} else {
-		note_password = note_password + "Пароль и подтверждение его не совападают"
+		note_password =  "Пароль и подтверждение его не совападают"
 		rchk.Passwordcon = 0
 	}
 	if len(password) < 64 {
@@ -133,7 +133,7 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 		note_sname = "Фамилия может содержать только заглавные и маленькие буквы,."
 		rchk.snrx = 0
 	} else {
-		note_username = "Фамилия содержит правильные символы."
+		note_sname = "Фамилия содержит правильные символы."
 		rchk.snrx = 1
 	}
 

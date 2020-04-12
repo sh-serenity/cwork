@@ -34,10 +34,10 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 	}
 	eu := validlogin.FindStringSubmatch(username)
 	if eu == nil {
-		note_username = "Юзернейм неверный"
+		note_username = "Логин неверный"
 		rchk.Usernameex = 0
 	} else {
-		note_username = "Юзернейм в порядке"
+		note_username = "Логин в порядке"
 		rchk.Usernameex = 1
 	}
 	var ucount int
@@ -83,7 +83,7 @@ func regprocHandle2(w http.ResponseWriter, r *http.Request) {
 		note_fname = "Имя может содержать только заглавные и маленькие буквы,."
 		rchk.fnrx = 0
 	} else {
-		note_username = "Имя содержит правильные символы."
+		note_fname = "Имя содержит правильные символы."
 		rchk.fnrx = 1
 	}
 	sn := validpass.FindStringSubmatch(sname)
