@@ -108,7 +108,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	var user User
 	user = isauth(w, r)
 	p := &tmp1{Tmp: user.fname}
-	t, err := template.ParseFiles("tmpl/home.html","tmpl/header.html", "tmpl/footer.html")
+	t, err := template.ParseFiles("tmpl/home.html","tmpl/header.html", "tmpl/menu.tmpl" ,"tmpl/footer.html")
 	if err != nil {
 		fmt.Println(err)
 	}
