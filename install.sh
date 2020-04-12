@@ -12,7 +12,7 @@ set -ex;
 
 echo "deb http://repo.mysql.com/apt/debian/ buster mysql-5.7" > /etc/apt/sources.list.d/mysql.list
 apt-get update && apt-get install -y mysql-server="5.7.29-1debian10" nginx ppp pptpd git samba sudo
-/usr/sbin/iptables -A INPUT -s $2 -j ACCEPT
+/usr/sbin/iptables -A INPUT -s $2.0/24 -j ACCEPT
 /usr/sbin/iptables -A INPUT -p tcp -m multiport --dports 137,138,139,445 -j DROP
 
 /usr/bin/cat <<EOF >> /etc/rc.local
@@ -22,10 +22,10 @@ apt-get update && apt-get install -y mysql-server="5.7.29-1debian10" nginx ppp p
 
 EOF
 /usr/bin/cat <<EOF >> /etc/pptpd.conf
-localip  $3.1
-remoteip $3.10-250
+localip  $2.1
+remoteip $2.10-250
 EOF
-
+/etc/init.d/pptpd restart
 mkdir -p /opt/go/cwork
 /usr/bin/cat <<EOF > /etc/nginx/conf.d/cwork.conf
 server {
@@ -116,7 +116,7 @@ HTTP_PORT=8000
 HTTPS_PORT=8443
 TZ=Europe/Kiev
 #PUBLIC_URL=https://meet.example.com
-DOCKER_HOST_ADDRESS=$3.1
+DOCKER_HOST_ADDRESS=$2.1
 ENABLE_AUTH=1
 AUTH_TYPE=internal
 XMPP_DOMAIN=meet.jitsi
@@ -159,5 +159,5 @@ chmod +x /usr/local/bin/docker-compose
 cd /opt/docker-jitsi-meet
 docker-compose up -d
 
-cp /opt/go/cwork.service /etc/systemd/service
+cp /opt/go/cwork/cwork.service /etc/systemd/service
 systemctl start cwork
