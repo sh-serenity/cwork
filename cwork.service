@@ -3,7 +3,7 @@ Description=cwork
 
 [Service]
 ExecStart=/opt/go/cwork/run.sh
-WorkingDiretory=/opt/go/cwork
+WorkingDirectory=/opt/go/cwork
 StandardOutput=null
 Restart=on-failure
 
