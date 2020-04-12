@@ -20,7 +20,7 @@
 --
 CREATE database shwork;
 create user cerber identified by 'cerberpass01';
-grant all privilegese on shwork.* to cerber;
+grant all privileges on shwork.* to cerber;
 
 use shwork;
 
