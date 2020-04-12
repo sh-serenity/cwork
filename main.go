@@ -61,7 +61,7 @@ func RegForm2(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-var validnon = regexp.MustCompile("^/(reg|regproc|enter|sign|exit|home|regproc2|reg2/reghelp)/$")
+var validnon = regexp.MustCompile("^/(reg|regproc|enter|sign|exit|home|regproc2|reg2|reghelp|userhelp)/$")
 var vaitdn = regexp.MustCompile("^/(comform|comment|users)/([0-9]+)$")
 
 func chknon(w http.ResponseWriter, r *http.Request)  {
@@ -103,6 +103,18 @@ func RegHelp(w http.ResponseWriter, r *http.Request) {
     }
 }
 
+func UserHelp(w http.ResponseWriter, r *http.Request) {
+    t, err := template.ParseFiles("tmpl/userhelp.html","tmpl/header.html", "tmpl/footer.html")
+    if err != nil {
+	fmt.Println(err)
+    }
+    t.ExecuteTemplate(w,"index", nil)
+    if err != nil {
+	fmt.Println(err)
+    }
+}
+
+
 
 func main() {
 //	fs := http.FileServer(http.Dir("./static"))
@@ -116,6 +128,7 @@ func main() {
 	http.HandleFunc("/regproc/", regprocHandle)
 	http.HandleFunc("/regproc2/", regprocHandle2)
 	http.HandleFunc("/sign/",signHandler)
+	http.HandleFunc("/userhelp/",UserHelp)
 	http.HandleFunc("/exit/", leaveHandler)
 	l, err := net.Listen("tcp", ":9001")
 	if err != nil {
