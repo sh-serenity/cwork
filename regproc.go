@@ -81,7 +81,7 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(uerr)
 	}
 	if ucount == 0 {
-		note_username = note_usernamep + "Такой логин еще не зарегистрирован"
+		note_usernamep = note_usernamep + "Такой логин еще не зарегистрирован"
 		rchk.Usernamereg = 1
 	} else {
 		note_usernamep = "Вы уже регистрировались здесь, с тем же логином"
@@ -167,7 +167,7 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 
 		http.Redirect(w,r,"/enter/",301)
 	} else {
-		resume = note_invite + " " + note_username +" " note_usernamep + " " + note_fname + " "  + note_sname + " " + note_password + " Данные введены с ошибками. Поправьте и попробуйте снова."
+		resume = note_invite + " " + note_username + " " + note_usernamep + " " + note_fname + " "  + note_sname + " " + note_password + " Данные введены с ошибками. Поправьте и попробуйте снова."
 		url = "/reg/"
 		to = "Регистрация"
 		p := &regdata{Resume: resume,Url: url, To: to}
