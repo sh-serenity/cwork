@@ -73,7 +73,7 @@ cd cwork
 /usr/bin/cat <<EOF > /opt/go/cwork/tmpl/menu.html
 {{ define "menu" }}
 
-<div><center><a href="/reg2/">Зарегистрировать юзера</a><a href="https://$3.1:8443/">Початится</a><a href="/exit/">Выйти</a></center></div>
+<div><center><a href="/reg2/">Зарегистрировать юзера</a><a href="https://$2.1:8443/">Початится</a><a href="/exit/">Выйти</a></center></div>
 
 {{ end }}
 EOF
