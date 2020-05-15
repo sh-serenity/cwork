@@ -11,7 +11,7 @@ set -ex;
     apt-key list > /dev/null
 
 echo "deb http://repo.mysql.com/apt/debian/ buster mysql-5.7" > /etc/apt/sources.list.d/mysql.list
-apt-get update && apt-get install -y mysql-server="5.7.29-1debian10" nginx ppp pptpd git samba sudo
+apt-get update && apt-get install -y mysql-server nginx ppp pptpd git samba sudo
 /usr/sbin/iptables -A INPUT -s $2.0/24 -j ACCEPT
 /usr/sbin/iptables -A INPUT -p tcp -m multiport --dports 137,138,139,445 -j DROP
 
