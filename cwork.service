@@ -2,8 +2,8 @@
 Description=cwork
 
 [Service]
-ExecStart=/opt/int/corono/corono-work/run.sh
-WorkingDirectory=/opt/int/corono/corono-work
+ExecStart=/opt/go/cwork/run.sh
+WorkingDirectory=/opt/go/cwork
 StandardOutput=null
 Restart=on-failure
 

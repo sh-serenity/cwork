@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/sudo -ugo /opt/int/corono/corono-work/corono-work
+/usr/bin/sudo -ugo /opt/go/cwork/cwork

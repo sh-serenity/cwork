@@ -57,7 +57,7 @@ func regprocHandle(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	if count > 0 {
+	if count == 1 {
 		note_invite = "Инвайт найден"
 		rchk.Invitech = 1
 	} else {
