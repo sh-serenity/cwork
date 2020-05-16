@@ -115,4 +115,4 @@ docker-compose up -d
 
 cp /opt/go/cwork/cwork.service /etc/systemd/system/
 /usr/bin/systemctl start cwork
-/usr/bin/systemctl enable cwork
+
