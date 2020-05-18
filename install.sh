@@ -103,9 +103,62 @@ apt-get update
 apt-get -y install docker-ce docker-ce-cli containerd.io
 
 cd /opt
-git clone https://github.com/jitsi/docker-jitsi-meet.git
-cp /opt/docker-jitsi-meet/env.example /opt/docker-jitsi-meet/.env
-/usr/bin/replace '#DOCKER_HOST_ADDRESS=192.168.1.1' DOCKER_HOST_ADDRESS=$2.1  -- /opt/docker-jitsi-meet/.env
+#git clone https://github.com/jitsi/docker-jitsi-meet.git
+#cp /opt/docker-jitsi-meet/env.example /opt/docker-jitsi-meet/.env
+#/usr/bin/replace '#DOCKER_HOST_ADDRESS=192.168.1.1' DOCKER_HOST_ADDRESS=$2.1  -- /opt/docker-jitsi-meet/.env
+wget https://github.com/jitsi/docker-jitsi-meet/archive/stable-3547.tar.gz
+tar xvzf stable-3547.tar.gz
+mv docker-jitsi-meet-stable-3547 docker-jitsi-meet
+
+/usr/bin/cat <<EOF > /opt/docker-jitsi-meet/.env
+JICOFO_COMPONENT_SECRET=azwsdcrf321
+JICOFO_AUTH_PASSWORD=azwsdcrf321
+JVB_AUTH_PASSWORD=azwsdcrf321
+JIGASI_XMPP_PASSWORD=azwsdcrf321
+JIBRI_RECORDER_PASSWORD=azwsdcrf321
+JIBRI_XMPP_PASSWORD=azwsdcrf321
+CONFIG=~/.jitsi-meet-cfg
+HTTP_PORT=8000
+HTTPS_PORT=8443
+TZ=Europe/Kiev
+#PUBLIC_URL=https://meet.example.com
+DOCKER_HOST_ADDRESS=$2.1
+ENABLE_AUTH=1
+AUTH_TYPE=internal
+XMPP_DOMAIN=meet.jitsi
+XMPP_SERVER=xmpp.meet.jitsi
+XMPP_BOSH_URL_BASE=http://xmpp.meet.jitsi:5280
+XMPP_AUTH_DOMAIN=auth.meet.jitsi
+XMPP_MUC_DOMAIN=muc.meet.jitsi
+XMPP_INTERNAL_MUC_DOMAIN=internal-muc.meet.jitsi
+XMPP_GUEST_DOMAIN=guest.meet.jitsi
+XMPP_MODULES=
+XMPP_MUC_MODULES=
+XMPP_INTERNAL_MUC_MODULES=
+JVB_BREWERY_MUC=jvbbrewery
+JVB_AUTH_USER=jvb
+JVB_STUN_SERVERS=meet-jit-si-turnrelay.jitsi.net:443
+JVB_PORT=10000
+JVB_TCP_HARVESTER_DISABLED=true
+JVB_TCP_PORT=4443
+#JVB_ENABLE_APIS=rest,colibri
+JICOFO_AUTH_USER=focus
+JIGASI_XMPP_USER=jigasi
+JIGASI_BREWERY_MUC=jigasibrewery
+JIGASI_PORT_MIN=20000
+JIGASI_PORT_MAX=20050
+#JIGASI_ENABLE_SDES_SRTP=1
+XMPP_RECORDER_DOMAIN=recorder.meet.jitsi
+JIBRI_RECORDER_USER=recorder
+JIBRI_RECORDING_DIR=/config/recordings
+JIBRI_FINALIZE_RECORDING_SCRIPT_PATH=/config/finalize.sh
+JIBRI_XMPP_USER=jibri
+JIBRI_BREWERY_MUC=jibribrewery
+JIBRI_PENDING_TIMEOUT=90
+JIBRI_STRIP_DOMAIN_JID=muc
+JIBRI_LOGS_DIR=/config/logs
+EOF
+
 
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
