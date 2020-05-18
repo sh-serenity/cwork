@@ -103,12 +103,7 @@ apt-get update
 apt-get -y install docker-ce docker-ce-cli containerd.io
 
 cd /opt
-#git clone https://github.com/jitsi/docker-jitsi-meet.git
-#cp /opt/docker-jitsi-meet/env.example /opt/docker-jitsi-meet/.env
-#/usr/bin/replace '#DOCKER_HOST_ADDRESS=192.168.1.1' DOCKER_HOST_ADDRESS=$2.1  -- /opt/docker-jitsi-meet/.env
-wget https://github.com/jitsi/docker-jitsi-meet/archive/stable-3547.tar.gz
-tar xvzf stable-3547.tar.gz
-mv docker-jitsi-meet-stable-3547 docker-jitsi-meet
+git clone https://github.com/jitsi/docker-jitsi-meet.git
 
 /usr/bin/cat <<EOF > /opt/docker-jitsi-meet/.env
 JICOFO_COMPONENT_SECRET=azwsdcrf321
